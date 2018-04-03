@@ -5,7 +5,7 @@ import java.util.Vector;
 
 public class wcInput {
     private String inputFile;
-    private Vector<String> fileContent;
+    private String fileContent;
     public String judgeInput(String[] args)
     {
         String inputFile="";
@@ -34,15 +34,16 @@ public class wcInput {
     {
         InputStreamReader isr = new InputStreamReader(new FileInputStream(inputFile));
         BufferedReader br = new BufferedReader(isr);
-        fileContent = new Vector<String>();
-        String s;
-        while((s=br.readLine())!=null)
-            fileContent.addElement(s);
+        char s;
+        StringBuilder sb = new StringBuilder();
+        while((s = (char)br.read())!=-1)
+            sb.append(s);
         isr.close();
         br.close();
+        fileContent = sb.toString();
     }
 
-    public Vector<String> getFileContent() {
+    public String getFileContent() {
         return fileContent;
     }
 }
