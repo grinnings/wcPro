@@ -1,7 +1,11 @@
-package input;
+package com.SoftwareQualityAndTesting;
+
+import java.io.*;
+import java.util.Vector;
 
 public class wcInput {
-
+    private String inputFile;
+    private Vector<String> fileContent;
     public String judgeInput(String[] args)
     {
         String inputFile="";
@@ -22,7 +26,23 @@ public class wcInput {
         {
             inputFile=args[0];
         }
+        this.inputFile = inputFile;
         return inputFile;
     }
 
+    public void readFileContent() throws IOException
+    {
+        InputStreamReader isr = new InputStreamReader(new FileInputStream(inputFile));
+        BufferedReader br = new BufferedReader(isr);
+        fileContent = new Vector<String>();
+        String s;
+        while((s=br.readLine())!=null)
+            fileContent.addElement(s);
+        isr.close();
+        br.close();
+    }
+
+    public Vector<String> getFileContent() {
+        return fileContent;
+    }
 }
