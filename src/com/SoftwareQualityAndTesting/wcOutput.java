@@ -5,46 +5,48 @@ import java.io.IOException;
 import java.util.Map;
 
 public class wcOutput {
-    static final int SZ=100;
+    static final int SZ = 100;
 
-    static boolean cmp(Map.Entry<String,Integer>e1, Map.Entry<String,Integer>e2){//针对输出结果的排序
-        if(e1.getValue().intValue()!=e2.getValue().intValue()){
-            return e1.getValue()-e2.getValue()<0;
+    static boolean cmp(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {//针对输出结果的排序
+        if (e1.getValue().intValue() != e2.getValue().intValue()) {
+            return e1.getValue() - e2.getValue() < 0;
         }
 
-        return e1.getKey().compareTo(e2.getKey())<0;
+        return e1.getKey().compareTo(e2.getKey()) < 0;
     }
 
-    public static void swap(Map.Entry<String,Integer> a[],int e1,int e2){
-        Map.Entry<String,Integer> t=a[e1];
-        a[e1]=a[e2];
-        a[e2]=t;
+    public static void swap(Map.Entry<String, Integer> a[], int e1, int e2) {
+        Map.Entry<String, Integer> t = a[e1];
+        a[e1] = a[e2];
+        a[e2] = t;
     }
 
-    public static void sort(Map.Entry<String,Integer> a[], int low, int hight) {
+    public static void sort(Map.Entry<String, Integer> a[], int low, int high) {
         int i, j;
-        Map.Entry<String,Integer>tmp;
-        if (low > hight) {
+        Map.Entry<String, Integer> tmp;
+        if (low > high) {
             return;
         }
-        i = low-1;
-        j = hight;
-        tmp = a[hight];
+        i = low - 1;
+        j = high;
+        tmp = a[high];
         // 用子表的第一个记录做基准
 
         while (i < j) { // 从表的两端交替向中间扫描
 
-            while((++i)<j&&!cmp(a[i],tmp)){}
+            while ((++i) < j && cmp(a[i], tmp)) {
+            }
 
-            while(i<(--j)&&cmp(a[j],tmp)){}
+            while (i < (--j) && !cmp(a[j], tmp)) {
+            }
 
-            if(i<j){
-                swap(a,i,j);
+            if (i < j) {
+                swap(a, i, j);
             }
         }
-        swap(a,i,hight);// 将基准数值替换回 a[i]
+        swap(a, i, high);// 将基准数值替换回 a[i]
         sort(a, low, i - 1); // 对低子表进行递归排序
-        sort(a, i + 1, hight); // 对高子表进行递归排序
+        sort(a, i + 1, high); // 对高子表进行递归排序
 
     }
 
@@ -53,10 +55,9 @@ public class wcOutput {
         sort(a, 0, a.length - 1);
     }
 
+    public void output(Map<String, Integer> result){
 
-    public static void main(String[] args){
-
-        Map<String,Integer> tempMap= main.XXMap;  //主函数输出的map
+        Map<String,Integer> tempMap= result;  //主函数输出的map
 
 //            HashMap<String, Integer> tempMap=new HashMap<String, Integer>(); //测试输出单元的代码
 //            tempMap.put("a", Integer.valueOf("12"));

@@ -9,7 +9,6 @@ public class wcInput {
     public String judgeInput(String[] args)
     {
         String inputFile="";
-        System.out.println("请输入正确的文件名：");
         if(args.length==0)//没有文件
         {
             System.out.println("未输入文件名，请重新输入文件名");
@@ -36,11 +35,11 @@ public class wcInput {
         BufferedReader br = new BufferedReader(isr);
         char s;
         StringBuilder sb = new StringBuilder();
-        while((s = (char)br.read())!=-1)
+        while((s = (char)br.read()) != (char)-1)
             sb.append(s);
         isr.close();
         br.close();
-        fileContent = sb.toString();
+        fileContent = sb.toString().toLowerCase();
     }
 
     public String getFileContent() {
