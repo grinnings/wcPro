@@ -12,7 +12,7 @@ public class wcOutput {
             return e1.getValue() - e2.getValue() < 0;
         }
 
-        return e1.getKey().compareTo(e2.getKey()) < 0;
+        return e1.getKey().compareTo(e2.getKey()) > 0;
     }
 
     public static void swap(Map.Entry<String, Integer> a[], int e1, int e2) {
@@ -34,10 +34,10 @@ public class wcOutput {
 
         while (i < j) { // 从表的两端交替向中间扫描
 
-            while ((++i) < j && cmp(a[i], tmp)) {
+            while ((++i) < j && !cmp(a[i], tmp)) {
             }
 
-            while (i < (--j) && !cmp(a[j], tmp)) {
+            while (i < (--j) && cmp(a[j], tmp)) {
             }
 
             if (i < j) {
