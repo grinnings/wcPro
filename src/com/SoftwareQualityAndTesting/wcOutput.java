@@ -59,12 +59,6 @@ public class wcOutput {
 
         Map<String,Integer> tempMap= result;  //主函数输出的map
 
-//            HashMap<String, Integer> tempMap=new HashMap<String, Integer>(); //测试输出单元的代码
-//            tempMap.put("a", Integer.valueOf("12"));
-//            tempMap.put("b", Integer.valueOf("34"));
-//            tempMap.put("c", Integer.valueOf("56"));
-//            tempMap.put("d", Integer.valueOf("56"));
-
         Map.Entry<String,Integer>[]a=new Map.Entry[tempMap.size()];
         int i =0;
         for (Map.Entry<String, Integer> entry : tempMap.entrySet()) {  //遍历Map
@@ -83,14 +77,16 @@ public class wcOutput {
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-
+        int len = 1;
         if (a.length<=SZ) {//词表少于100个
             for (Map.Entry<String, Integer> e : a) {
 
                 System.out.println(e.getKey() + e.getValue());
 
                 try {
-                    writer.write(e.getKey() + " " + e.getValue() + "\r\n");
+                    writer.write(e.getKey() + " " + e.getValue());
+                    if(len++ < a.length)
+                        writer.write("\r\n");
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -100,7 +96,9 @@ public class wcOutput {
             for (i=1;i<=SZ;i++){
 
                 try {
-                    writer.write(a[i].getKey()+" "+a[i].getValue()+"\r\n");
+                    writer.write(a[i].getKey()+" "+a[i].getValue());
+                    if(len++ < a.length)
+                        writer.write("\r\n");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
