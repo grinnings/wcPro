@@ -1,0 +1,10 @@
+apple
+a
+a
+a-b
+a-b-c-d-e-f-g
+a
+a
+apple-aa-a
+
+let

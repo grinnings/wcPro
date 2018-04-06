@@ -55,6 +55,7 @@ public class wcOutput {
         sort(a, 0, a.length - 1);
     }
 
+
     public void output(Map<String, Integer> result){
 
         Map<String,Integer> tempMap= result;  //主函数输出的map

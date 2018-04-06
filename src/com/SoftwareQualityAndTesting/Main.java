@@ -22,7 +22,5 @@ public class Main {
         Map<String, Integer> result = wcmp.countWordFrequency();
         wcOutput wco = new wcOutput();
         wco.output(result);
-        for(Map.Entry<String, Integer> r : result.entrySet())
-            System.out.println("K: "+r.getKey()+",V: "+r.getValue());
     }
 }

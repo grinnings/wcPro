@@ -25,8 +25,7 @@ public class wcMainProcess
             char temp = fileContent.charAt(index);
             if(temp >= 'a' && temp <= 'z')
             {
-                Word();
-                String word = curWordBuilder.toString();
+                String word = Word().toString();
                 if(result.containsKey(word))
                     result.put(word,result.get(word)+1);
                 else
@@ -37,14 +36,14 @@ public class wcMainProcess
         return result;
     }
 
-    public void Word()
+    public StringBuilder Word()
     {
         char temp = fileContent.charAt(index);
         while(temp >= 'a' && temp <= 'z')
         {
             curWordBuilder.append(temp);
             if(index == fileContent.length()-1)
-                return;
+                return curWordBuilder;
             temp = fileContent.charAt(++index);
         }
         if(temp == '-')
@@ -60,5 +59,7 @@ public class wcMainProcess
                 }
             }
         }
+        return curWordBuilder;
     }
+
 }
