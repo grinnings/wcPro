@@ -1,5 +1,6 @@
 package com.SoftwareQualityAndTesting;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.Vector;
 
@@ -19,7 +20,17 @@ public class wcInput {
         }
         else if(!args[0].endsWith(".txt"))
         {
-            System.out.println("输入的不是txt格式文件，请重新输入一个txt文件");
+            if(args[0].equals("-x")){
+                JFileChooser jfc=new JFileChooser(".");
+                int returnVal = jfc.showOpenDialog(null);
+                if(returnVal == JFileChooser.APPROVE_OPTION)
+                {
+                    //获得打开的文件
+                    inputFile = jfc.getSelectedFile().getAbsolutePath();
+                }
+            }
+            else
+                System.out.println("输入的不是txt格式文件，请重新输入一个txt文件");
         }
         else
         {
